@@ -1,4 +1,4 @@
-require 'spec_helper'
+  require 'spec_helper'
 
 describe 'GetCount action' do
   # according to the docs, the response should look something like this

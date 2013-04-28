@@ -1,5 +1,5 @@
 module SpreeShipworks
-  class ApiController < ApplicationController
+  class Spree::ApiController < ApplicationController
     def action
       response.content_type = 'text/xml'
 
@@ -55,7 +55,7 @@ module SpreeShipworks
     end
 
     def authorized?
-      valid? && api_user.has_role?(:admin)
+      valid? && api_user.has_spree_role?(:admin)
     end
 
     def valid?

@@ -84,7 +84,7 @@ module SpreeShipworks
 
     context 'Creditcard' do
       let(:creditcard) {
-        c = Spree::Creditcard.new(
+        c = Spree::CreditCard.new(
           :first_name => 'Testy',
           :last_name  => 'Tester',
           :number     => '4111111111111111',
@@ -123,7 +123,7 @@ module SpreeShipworks
 
       context 'when data is missing' do
         let(:creditcard) {
-          Spree::Creditcard.new.extend(SpreeShipworks::Xml::Creditcard)
+          Spree::CreditCard.new.extend(SpreeShipworks::Xml::Creditcard)
         }
 
         it 'should still have a Type node' do
@@ -365,7 +365,7 @@ module SpreeShipworks
 
       it 'should have a Method node' do
         xml.xpath('/Payment/Method').text.should_not be_empty
-        xml.xpath('/Payment/Method').text.should == 'Creditcard'
+        xml.xpath('/Payment/Method').text.should == 'CreditCard'
         xml.xpath('/Payment/CreditCard').should be_present
       end
     end
