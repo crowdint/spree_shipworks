@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.description = "This project implements the ShipWorks 3.0 API endpoint as defined in 'ShipWorks 3.0: Store Integration Guide: version 1.0'."
   s.required_ruby_version = '>= 1.8.7'
 
-  s.authors    = ['M. Scott Ford']
-  s.email     = ['scott@railsdog.com']
+  s.author    = 'M. Scott Ford'
+  s.email     = 'scott@railsdog.com'
   s.homepage  = 'http://railsdog.com'
 
   #s.files       = `git ls-files`.split("\n")
