@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.8.7'
 
   s.author    = 'M. Scott Ford'
+  s.authors    = ['M. Scott Ford']
   s.email     = 'scott@railsdog.com'
   s.homepage  = 'http://railsdog.com'
 
