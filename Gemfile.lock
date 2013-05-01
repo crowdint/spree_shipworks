@@ -13,6 +13,7 @@ PATH
   remote: .
   specs:
     spree_shipworks (1.3.2)
+      nokogiri (~> 1.5.9)
       spree_core (~> 1.3.2)
 
 GEM
