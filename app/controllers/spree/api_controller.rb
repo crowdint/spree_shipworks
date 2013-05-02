@@ -1,5 +1,3 @@
-require 'spree/base_controller'
-
 module SpreeShipworks
   class Spree::ApiController < ApplicationController
     def action
