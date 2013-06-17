@@ -43,7 +43,10 @@ describe 'UpdateShipment action' do
     shipment_scope.should_receive(:ship)
 
     xml.xpath('/ShipWorks/UpdateSuccess').should be_present
+
+    #ActionMailer::Base.deliveries.should_not be_empty
   end
+
 
   # according to the docs, an error response should look something like this:
   #

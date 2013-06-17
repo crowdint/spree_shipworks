@@ -15,7 +15,8 @@ module SpreeShipworks
           :state    => Spree::State.new(:abbr => 'Test'),
           :zipcode  => '12345',
           :country  => Spree::Country.new(:iso_name => 'Testystan'),
-          :phone    => '1234567890'
+          :phone    => '1234567890',
+          :email    => 'user@example.com'
         ).extend(SpreeShipworks::Xml::Address)
       }
       let(:xml) { address.to_shipworks_xml('Address', context) }
@@ -46,6 +47,10 @@ module SpreeShipworks
 
       it 'should have a Phone node' do
         xml.xpath('/Address/Phone').text.should == address.phone
+      end
+
+      it 'should have a Email address' do
+        xml.xpath('/Address/Email').text.should == address.email
       end
     end
 
