@@ -3,10 +3,11 @@ module SpreeShipworks
     include Dsl
 
     def call(params)
-      order = Spree::Order.find(params['order'])
+      order = Spree::Order.find_by_number(params['order'])
 
       shipment = order.shipments.first
       if shipment.try(:update_attributes, { :tracking => params['tracking'] })
+        shipment.reload
         shipment.ship
         
         response do |r|

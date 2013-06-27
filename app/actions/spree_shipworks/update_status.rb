@@ -3,7 +3,7 @@ module SpreeShipworks
     include Dsl
 
     def call(params)
-      if order = Spree::Order.find(params['order'])
+      if order = Spree::Order.find_by_number(params['order'])
         order.shipments.each do |shipment|
           shipment.send("#{params['status']}!".to_sym)
         end
