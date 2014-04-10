@@ -6,9 +6,9 @@ module SpreeShipworks
 
     def call(params)
       response do |r|
-        r.element 'Orders' do |r|
+        r.element 'Orders' do |element|
           ::SpreeShipworks::Orders.since_in_batches(params['start'], params['maxcount']) do |order|
-            order.to_shipworks_xml(r)
+            order.to_shipworks_xml(element)
           end
         end
       end
