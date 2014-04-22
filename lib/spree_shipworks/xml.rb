@@ -134,7 +134,7 @@ module SpreeShipworks
       def to_shipworks_xml(context)
         context.element 'Payment' do |payment_context|
           payment_context.element 'Method', self.payment_source.class.name.split("::").last
-          if self.source.present?
+          if self.source.present? && self.source.instance_of?(Spree::CreditCard)
             self.source.extend(Creditcard)
             self.source.to_shipworks_xml(payment_context)
           end
