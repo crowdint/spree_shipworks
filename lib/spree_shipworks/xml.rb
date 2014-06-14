@@ -11,7 +11,7 @@ module SpreeShipworks
           a.element 'PostalCode', self.zipcode
           a.element 'Country',    self.country.try(:iso_name)
           a.element 'Phone',      self.phone
-          a.element 'Email',      self.email if self.try(:email)
+          a.element 'Email',      self.try(:email) || self.user.try(:email)
         end
       end
     end # Address
