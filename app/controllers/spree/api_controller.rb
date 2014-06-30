@@ -31,7 +31,6 @@ module SpreeShipworks
 
     def dispatch_action(action_name)
       if actions[action_name].present?
-        find_order if action_name.include?('update')
         action_result = actions[action_name].new.call(request.request_parameters)
         logger.info(action_result)
         render(:text => action_result)
@@ -79,10 +78,6 @@ module SpreeShipworks
 
     def api_action
       request.request_parameters['action'] || request.query_parameters['action']
-    end
-
-    def find_order
-      @order = Spree::Order.find_by_number "R#{params['order']}"
     end
   end
 end
