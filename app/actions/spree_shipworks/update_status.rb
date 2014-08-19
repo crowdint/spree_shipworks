@@ -3,7 +3,7 @@ module SpreeShipworks
     include Dsl
 
     def call(params)
-      order = Spree::Order.find_by_number "R#{params['order']}"
+      order = Spree::Order.find_by_number "R#{params['order'].rjust(9,'0')}"
       if order
         order.shipments.each do |shipment|
           shipment.send("#{params['status']}!".to_sym)
@@ -15,7 +15,7 @@ module SpreeShipworks
       end
 
     rescue ActiveRecord::RecordNotFound
-      error_response("NOT_FOUND", "Unable to find an order with ID of '#R#{params['order']}'.")
+      error_response("NOT_FOUND", "Unable to find an order with ID of '#R#{params['order'].rjust(9,'0')}'.")
     rescue StateMachine::InvalidTransition, NoMethodError => error
       error_response("INVALID_STATUS", error.to_s)
     rescue => error
