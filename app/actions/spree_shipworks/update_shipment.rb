@@ -3,7 +3,7 @@ module SpreeShipworks
     include Dsl
 
     def call(params)
-      order = Spree::Order.find_by_number "R#{params['order']}"
+      order = Spree::Order.find_by_number "R#{params['order'].rjust(9,'0')}"
       shipment = order.shipments.first
       if shipment.try(:update_attributes, { :tracking => params['tracking'] })
         shipment.reload
@@ -13,7 +13,7 @@ module SpreeShipworks
           r.element 'UpdateSuccess'
         end
       else
-        error_response("UNPROCESSIBLE_ENTITY", "Could not update tracking information for Order #R#{params['order']}")
+        error_response("UNPROCESSIBLE_ENTITY", "Could not update tracking information for Order #R#{params['order'].rjust(9,'0')}")
       end
 
     rescue ActiveRecord::RecordNotFound
